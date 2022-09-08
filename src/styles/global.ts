@@ -33,6 +33,16 @@ export const GlobalStyle = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
     }
 
+    button{
+    outline: 0;
+    border: none;
+    }
+    
+    button, 
+    a{
+        cursor: pointer;
+    }
+
     @media screen and (max-width: 768px) {
         html{
             font-size: 87.5%;
