@@ -3,20 +3,34 @@ import background from "../../../../assets/introductionBackground.svg";
 
 export const IntroductionContainer = styled.section`
   width: 100%;
-  height: 34rem;
+  min-height: 34rem;
 
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 3.5rem;
 
   background-image: url(${background});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+`;
 
-  img {
-    max-width: 476px;
+export const ContentContainer = styled.div`
+  width: 1120px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3.5rem;
+
+  @media screen and (max-width: 1120px) {
+    width: 100%;
+    padding: 0 10%;
+  }
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
   }
 `;
 
@@ -83,5 +97,12 @@ export const BenefitContainer = styled.div<IconBackgroundProps>`
   h3 {
     font-size: 1rem;
     font-weight: 400;
+  }
+`;
+
+export const CoffeeImage = styled.img`
+  width: 29.75rem;
+  @media screen and (max-width: 1024px) {
+    width: 25rem;
   }
 `;
