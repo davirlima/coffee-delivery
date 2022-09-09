@@ -1,17 +1,22 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
+  width: 1120px;
+  margin: 0 auto;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding: 2rem 10rem;
+  padding: 2rem 0;
 
   img {
     width: 5.3rem;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1120px) {
+    width: 100%;
+
     padding: 2rem 10%;
   }
   @media screen and (max-width: 320px) {
