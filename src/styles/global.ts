@@ -9,7 +9,8 @@ export const GlobalStyle = createGlobalStyle`
 
     body {
         background-color: ${(props) => props.theme.body_bg};
-        color: ${(props) => props.theme.base_txt}
+        color: ${(props) => props.theme.base_txt};
+        line-height: 1.3;
     }
 
     body,
@@ -22,15 +23,16 @@ export const GlobalStyle = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6{
+    h1{
+        font-size: 3rem;
         font-family: 'Baloo 2', cursive;
         font-weight: 700;
         -webkit-font-smoothing: antialiased;
+        color: ${(props) => props.theme.base_title}
+    }
+
+    h2{
+        color: ${(props) => props.theme.base_subtitle}
     }
 
     button{
