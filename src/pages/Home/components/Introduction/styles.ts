@@ -102,7 +102,12 @@ export const BenefitContainer = styled.div<IconBackgroundProps>`
 
 export const CoffeeImage = styled.img`
   width: 29.75rem;
+
   @media screen and (max-width: 1024px) {
     width: 25rem;
+  }
+
+  @media screen and (max-width: 320px) {
+    width: 20rem;
   }
 `;
