@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CoffeeListContainer = styled.main`
-  width: 1120px;
+  width: 1440px;
   margin: 2rem auto;
   display: flex;
   flex-direction: column;
@@ -9,6 +9,9 @@ export const CoffeeListContainer = styled.main`
   justify-content: center;
   gap: 3.375rem;
 
+  @media screen and (max-width: 1440px) {
+    width: 1120px;
+  }
   @media screen and (max-width: 1120px) {
     width: 100%;
     padding: 0 10%;

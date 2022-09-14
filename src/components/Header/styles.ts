@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
-  width: 1120px;
+  width: 1440px;
   margin: 0 auto;
 
   display: flex;
@@ -14,6 +14,9 @@ export const HeaderContainer = styled.header`
     width: 5.3rem;
   }
 
+  @media screen and (max-width: 1440px) {
+    width: 1120px;
+  }
   @media screen and (max-width: 1120px) {
     width: 100%;
 

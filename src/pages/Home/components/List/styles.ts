@@ -7,6 +7,10 @@ export const ListContainer = styled.section`
   row-gap: 2.5rem;
   column-gap: 2rem;
 
+  @media screen and (min-width: 1441px) {
+    width: 100%;
+    justify-content: space-between;
+  }
   @media screen and (max-width: 1024px) {
     grid-template-columns: 16rem 16rem 16rem;
   }

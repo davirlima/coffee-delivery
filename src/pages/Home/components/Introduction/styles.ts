@@ -15,7 +15,7 @@ export const IntroductionContainer = styled.section`
 `;
 
 export const ContentContainer = styled.div`
-  width: 1120px;
+  width: 1440px;
   margin: 0 auto;
 
   display: flex;
@@ -23,6 +23,9 @@ export const ContentContainer = styled.div`
   justify-content: space-between;
   gap: 3.5rem;
 
+  @media screen and (max-width: 1440px) {
+    width: 1120px;
+  }
   @media screen and (max-width: 1120px) {
     width: 100%;
     padding: 0 10%;
