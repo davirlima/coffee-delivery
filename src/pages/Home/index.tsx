@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Introduction } from "./components/Introduction";
 import { List } from "./components/List";
 import {
@@ -7,6 +8,10 @@ import {
 } from "./styles";
 
 export function Home() {
+  const [filterCoffee, setFilterCoffee] = useState<
+    "ALL" | "TRADICIONAL" | "ESPECIAL" | "COM LEITE" | "ALCOÓLICO" | "GELADO"
+  >("ALL");
+
   return (
     <>
       <Introduction />
@@ -14,14 +19,22 @@ export function Home() {
         <HeaderContainer>
           <h1>Nossos cafés</h1>
           <FilterContainer>
-            <button>TRADICIONAL</button>
-            <button>ESPECIAL</button>
-            <button>COM LEITE</button>
-            <button>ACOÓLICO</button>
-            <button>GELADO</button>
+            <button onClick={() => setFilterCoffee("TRADICIONAL")}>
+              TRADICIONAL
+            </button>
+            <button onClick={() => setFilterCoffee("ESPECIAL")}>
+              ESPECIAL
+            </button>
+            <button onClick={() => setFilterCoffee("COM LEITE")}>
+              COM LEITE
+            </button>
+            <button onClick={() => setFilterCoffee("ALCOÓLICO")}>
+              ACOÓLICO
+            </button>
+            <button onClick={() => setFilterCoffee("GELADO")}>GELADO</button>
           </FilterContainer>
         </HeaderContainer>
-        <List />
+        <List filter={filterCoffee} />
       </CoffeeListContainer>
     </>
   );

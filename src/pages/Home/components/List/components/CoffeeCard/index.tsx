@@ -18,7 +18,7 @@ export function CoffeeCard(coffee: CoffeesProps) {
           alt={`Imagem de um ${coffee.name} em uma xícara a cima de um pires`}
         />
         <div>
-          {coffee.filter.map((tag) => {
+          {coffee.kind.map((tag) => {
             return <h3 key={tag + ""}>{tag}</h3>;
           })}
         </div>
