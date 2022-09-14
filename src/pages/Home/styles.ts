@@ -59,6 +59,10 @@ export const FilterContainer = styled.div`
     }
   }
 
+  .active {
+    background-color: ${(props) => props.theme.yellow_light};
+  }
+
   @media screen and (max-width: 425px) {
     width: 90%;
     flex-wrap: wrap;
