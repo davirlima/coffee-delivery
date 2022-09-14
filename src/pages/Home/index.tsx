@@ -21,7 +21,7 @@ export function Home() {
           <FilterContainer>
             <button
               onClick={() =>
-                filterCoffee === "ALL"
+                filterCoffee !== "TRADICIONAL"
                   ? setFilterCoffee("TRADICIONAL")
                   : setFilterCoffee("ALL")
               }
@@ -31,7 +31,7 @@ export function Home() {
             </button>
             <button
               onClick={() =>
-                filterCoffee === "ALL"
+                filterCoffee !== "ESPECIAL"
                   ? setFilterCoffee("ESPECIAL")
                   : setFilterCoffee("ALL")
               }
@@ -41,7 +41,7 @@ export function Home() {
             </button>
             <button
               onClick={() =>
-                filterCoffee === "ALL"
+                filterCoffee !== "COM LEITE"
                   ? setFilterCoffee("COM LEITE")
                   : setFilterCoffee("ALL")
               }
@@ -51,7 +51,7 @@ export function Home() {
             </button>
             <button
               onClick={() =>
-                filterCoffee === "ALL"
+                filterCoffee !== "ALCOÓLICO"
                   ? setFilterCoffee("ALCOÓLICO")
                   : setFilterCoffee("ALL")
               }
@@ -61,7 +61,7 @@ export function Home() {
             </button>
             <button
               onClick={() =>
-                filterCoffee === "ALL"
+                filterCoffee !== "GELADO"
                   ? setFilterCoffee("GELADO")
                   : setFilterCoffee("ALL")
               }
