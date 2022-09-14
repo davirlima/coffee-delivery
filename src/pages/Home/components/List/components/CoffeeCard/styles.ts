@@ -98,6 +98,8 @@ export const CounterContainer = styled.div`
   width: 4.5rem;
   height: 2.375rem;
 
+  padding: 0 0.5rem;
+
   background-color: ${(props) => props.theme.base_button};
   border-radius: 6px;
 
