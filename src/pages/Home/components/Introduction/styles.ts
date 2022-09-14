@@ -98,6 +98,7 @@ export const BenefitContainer = styled.div<IconBackgroundProps>`
   }
 
   h3 {
+    text-align: left;
     font-size: 1rem;
     font-weight: 400;
   }
