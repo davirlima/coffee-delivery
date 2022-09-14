@@ -1,13 +1,26 @@
 import { Introduction } from "./components/Introduction";
 import { List } from "./components/List";
-import { CoffeeListContainer } from "./styles";
+import {
+  CoffeeListContainer,
+  FilterContainer,
+  HeaderContainer,
+} from "./styles";
 
 export function Home() {
   return (
     <>
       <Introduction />
       <CoffeeListContainer>
-        <h1 className="titleSection">Nossos cafés</h1>
+        <HeaderContainer>
+          <h1>Nossos cafés</h1>
+          <FilterContainer>
+            <button>TRADICIONAL</button>
+            <button>ESPECIAL</button>
+            <button>COM LEITE</button>
+            <button>ACOÓLICO</button>
+            <button>GELADO</button>
+          </FilterContainer>
+        </HeaderContainer>
         <List />
       </CoffeeListContainer>
     </>

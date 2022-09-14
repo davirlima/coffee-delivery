@@ -108,7 +108,7 @@ const coffees: CoffeesProps[] = [
   },
   {
     image: havaiano,
-    name: "HAVAIANO",
+    name: "Havaiano",
     description: "Bebida adocicada preparada com café e leite de coco",
     value: "9,90",
     filter: ["ESPECIAL"],
