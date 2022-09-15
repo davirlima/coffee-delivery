@@ -1,7 +1,19 @@
+import { CartContainer, Frame } from "./styles";
+
 export function Cart() {
   return (
-    <div>
-      <h1>Cart page</h1>
-    </div>
+    <CartContainer>
+      <Frame>
+        <h1>Complete seu pedido</h1>
+        <div>
+          <div></div>
+          <div></div>
+        </div>
+      </Frame>
+      <Frame>
+        <h1>Cafés selecionados</h1>
+        <div></div>
+      </Frame>
+    </CartContainer>
   );
 }
