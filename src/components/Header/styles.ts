@@ -55,7 +55,7 @@ export const LocalInformationContainer = styled.div`
   }
 `;
 
-export const CartContainer = styled.button`
+export const CartContainer = styled.div`
   width: 2.375rem;
   height: 2.375rem;
 
@@ -63,8 +63,12 @@ export const CartContainer = styled.button`
   align-items: center;
   justify-content: center;
 
-  color: ${(props) => props.theme.yellow_dark};
-
   background-color: ${(props) => props.theme.yellow_light};
   border-radius: 4px;
+
+  a {
+    color: ${(props) => props.theme.yellow_dark};
+    width: 22px;
+    height: 22px;
+  }
 `;

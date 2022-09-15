@@ -6,14 +6,17 @@ import {
 } from "./styles";
 import logo from "../../assets/logo.svg";
 import { MapPin, ShoppingCart } from "phosphor-react";
+import { NavLink } from "react-router-dom";
 
 export function Header() {
   return (
     <HeaderContainer>
-      <img
-        src={logo}
-        alt='Copo de café roxo, com símbolo de fogute no meio, ao lado o texto "Coffe Delivery"'
-      />
+      <NavLink to="/" className="linkToHome">
+        <img
+          src={logo}
+          alt='Copo de café roxo, com símbolo de fogute no meio, ao lado o texto "Coffe Delivery"'
+        />
+      </NavLink>
 
       <ButtonsContainer>
         <LocalInformationContainer>
@@ -22,7 +25,9 @@ export function Header() {
         </LocalInformationContainer>
 
         <CartContainer>
-          <ShoppingCart weight="fill" size={22} />
+          <NavLink to="/carrinho" title="Carrinho">
+            <ShoppingCart weight="fill" size={22} />
+          </NavLink>
         </CartContainer>
       </ButtonsContainer>
     </HeaderContainer>
