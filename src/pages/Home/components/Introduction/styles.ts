@@ -30,7 +30,7 @@ export const ContentContainer = styled.div`
     width: 100%;
     padding: 0 10%;
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 800px) {
     flex-direction: column;
     text-align: center;
     align-items: center;
