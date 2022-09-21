@@ -1,9 +1,13 @@
 import {
   ButtonsPaymentContainer,
   CartContainer,
+  CoffeeCardContainer,
+  CountButton,
   FormAddressContainer,
   Frame,
-  FrameContentContainer,
+  RemoveButton,
+  RequestContainer,
+  SelectedCoffeesContainer,
 } from "./styles";
 import {
   MapPinLine,
@@ -11,7 +15,12 @@ import {
   CreditCard,
   Bank,
   Money,
+  Minus,
+  Plus,
+  Trash,
 } from "phosphor-react";
+import tradicional from "../../assets/KindsOfCoffees/tradicional.png";
+import latte from "../../assets/KindsOfCoffees/latte.png";
 
 export function Cart() {
   return (
@@ -19,7 +28,7 @@ export function Cart() {
       <Frame>
         <h1>Complete seu pedido</h1>
 
-        <FrameContentContainer>
+        <RequestContainer>
           <div className="header">
             <MapPinLine size={22} className="icon-yellow_dark" />
             <div>
@@ -41,9 +50,9 @@ export function Cart() {
               <input type="text" placeholder="UF" id="uf" />
             </div>
           </FormAddressContainer>
-        </FrameContentContainer>
+        </RequestContainer>
 
-        <FrameContentContainer>
+        <RequestContainer>
           <div className="header">
             <CurrencyDollar size={22} className="icon-purple" />
             <div>
@@ -74,11 +83,69 @@ export function Cart() {
               </label>
             </div>
           </ButtonsPaymentContainer>
-        </FrameContentContainer>
+        </RequestContainer>
       </Frame>
       <Frame>
         <h1>Cafés selecionados</h1>
-        <div></div>
+
+        <SelectedCoffeesContainer>
+          <CoffeeCardContainer>
+            <div className="information">
+              <img src={tradicional} alt="" />
+
+              <div className="details">
+                <h3>Expresso Tradicional</h3>
+
+                <div className="buttons">
+                  <CountButton>
+                    <button>
+                      <Minus weight="bold" size={14} />
+                    </button>
+                    <span>1</span>
+                    <button>
+                      <Plus weight="bold" size={14} />
+                    </button>
+                  </CountButton>
+
+                  <RemoveButton>
+                    <Trash size={16} className="icon" />
+                    REMOVER
+                  </RemoveButton>
+                </div>
+              </div>
+            </div>
+
+            <h3 className="value">R$9,90</h3>
+          </CoffeeCardContainer>
+          <CoffeeCardContainer>
+            <div className="information">
+              <img src={latte} alt="" />
+
+              <div className="details">
+                <h3>Latte</h3>
+
+                <div className="buttons">
+                  <CountButton>
+                    <button>
+                      <Minus weight="bold" size={14} />
+                    </button>
+                    <span>1</span>
+                    <button>
+                      <Plus weight="bold" size={14} />
+                    </button>
+                  </CountButton>
+
+                  <RemoveButton>
+                    <Trash size={16} className="icon" />
+                    REMOVER
+                  </RemoveButton>
+                </div>
+              </div>
+            </div>
+
+            <h3 className="value">R$9,90</h3>
+          </CoffeeCardContainer>
+        </SelectedCoffeesContainer>
       </Frame>
     </CartContainer>
   );

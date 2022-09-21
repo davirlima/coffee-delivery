@@ -34,7 +34,7 @@ export const Frame = styled.section`
   }
 `;
 
-export const FrameContentContainer = styled.div`
+export const RequestContainer = styled.div`
   padding: 2.5rem;
 
   display: flex;
@@ -59,7 +59,6 @@ export const FrameContentContainer = styled.div`
     h2 {
       font-size: 1rem;
       font-weight: 400;
-      color: ${(props) => props.theme.base_subtitle};
     }
     p {
       font-size: 0.875rem;
@@ -127,6 +126,7 @@ export const ButtonsPaymentContainer = styled.div`
   }
 
   label {
+    cursor: pointer;
     position: relative;
     display: flex;
     align-items: center;
@@ -134,6 +134,7 @@ export const ButtonsPaymentContainer = styled.div`
 
     padding: 1rem;
     background-color: ${(props) => props.theme.base_button};
+    transition: background-color, 0.5s;
     border: 1px solid transparent;
     border-radius: 6px;
     font-size: 0.75rem;
@@ -142,5 +143,108 @@ export const ButtonsPaymentContainer = styled.div`
       font-size: 1rem;
       color: ${(props) => props.theme.purple};
     }
+
+    :hover {
+      background-color: ${(props) => props.theme.base_hover};
+    }
+  }
+`;
+
+export const SelectedCoffeesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  padding: 2.5rem;
+
+  background-color: ${(props) => props.theme.base_card};
+  border-radius: 6px 44px;
+`;
+
+export const CoffeeCardContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid ${(props) => props.theme.base_button};
+
+  .information {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+
+    img {
+      width: 4rem;
+    }
+
+    .details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      h3 {
+        font-size: 1rem;
+        font-weight: 400;
+        color: ${(props) => props.theme.base_subtitle};
+      }
+
+      .buttons {
+        display: flex;
+        gap: 0.5rem;
+      }
+    }
+  }
+
+  .value {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+`;
+
+export const BaseDatailButton = styled.div`
+  height: 2rem;
+  padding: 0 0.5rem;
+
+  background-color: ${(props) => props.theme.base_button};
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+`;
+
+export const CountButton = styled(BaseDatailButton)`
+  span {
+    font-size: 1rem;
+    width: 1.25rem;
+    text-align: center;
+    color: ${(props) => props.theme.base_title};
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+
+    color: ${(props) => props.theme.purple};
+    transition: color, 0.5s;
+
+    :hover {
+      color: ${(props) => props.theme.purple_dark};
+    }
+  }
+`;
+
+export const RemoveButton = styled(BaseDatailButton)`
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background-color, 0.5s;
+
+  .icon {
+    color: ${(props) => props.theme.purple};
+  }
+
+  :hover {
+    background-color: ${(props) => props.theme.base_hover};
   }
 `;
