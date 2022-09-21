@@ -8,6 +8,7 @@ import {
   RemoveButton,
   RequestContainer,
   SelectedCoffeesContainer,
+  ValuesInfomationContainer,
 } from "./styles";
 import {
   MapPinLine,
@@ -117,6 +118,7 @@ export function Cart() {
 
             <h3 className="value">R$9,90</h3>
           </CoffeeCardContainer>
+
           <CoffeeCardContainer>
             <div className="information">
               <img src={latte} alt="" />
@@ -145,6 +147,21 @@ export function Cart() {
 
             <h3 className="value">R$9,90</h3>
           </CoffeeCardContainer>
+
+          <ValuesInfomationContainer>
+            <div>
+              <p>Total de itens</p>
+              <p>R$ 00,00</p>
+            </div>
+            <div>
+              <p>Entrega</p>
+              <p>R$ 3,50</p>
+            </div>
+            <div className="total">
+              <p>Total</p>
+              <p>R$ 00,00</p>
+            </div>
+          </ValuesInfomationContainer>
         </SelectedCoffeesContainer>
       </Frame>
     </CartContainer>

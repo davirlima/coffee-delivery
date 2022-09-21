@@ -248,3 +248,23 @@ export const RemoveButton = styled(BaseDatailButton)`
     background-color: ${(props) => props.theme.base_hover};
   }
 `;
+
+export const ValuesInfomationContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+  }
+
+  .total {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: ${(props) => props.theme.base_subtitle};
+  }
+`;
