@@ -6,6 +6,7 @@ import {
   FormAddressContainer,
   Frame,
   RemoveButton,
+  RequestButton,
   RequestContainer,
   SelectedCoffeesContainer,
   ValuesInfomationContainer,
@@ -162,6 +163,8 @@ export function Cart() {
               <p>R$ 00,00</p>
             </div>
           </ValuesInfomationContainer>
+
+          <RequestButton>CONFIRMAR PEDIDO</RequestButton>
         </SelectedCoffeesContainer>
       </Frame>
     </CartContainer>

@@ -268,3 +268,24 @@ export const ValuesInfomationContainer = styled.div`
     color: ${(props) => props.theme.base_subtitle};
   }
 `;
+
+export const RequestButton = styled.button`
+  width: 100%;
+  height: 2.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: ${(props) => props.theme.yellow};
+  transition: background-color, 0.5s;
+  border: none;
+  border-radius: 6px;
+  color: ${(props) => props.theme.white};
+
+  font-size: 0.875rem;
+  text-transform: uppercase;
+
+  :hover {
+    background-color: ${(props) => props.theme.yellow_dark};
+  }
+`;
