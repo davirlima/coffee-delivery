@@ -5,7 +5,8 @@ import * as zod from "zod";
 import { Request } from "./components/Request";
 import { SelectedCoffees } from "./components/SelectedCoffees";
 import { toast } from "react-toastify";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { CartContext } from "../../contexts/CartContext";
 
 const newRequestFormValidationSchema = zod.object({
   cep: zod
@@ -22,9 +23,11 @@ const newRequestFormValidationSchema = zod.object({
   payment: zod.string().min(1, "Selecione uma forma de pagamento"),
 });
 
-type AddressFormData = zod.infer<typeof newRequestFormValidationSchema>;
+export type AddressFormData = zod.infer<typeof newRequestFormValidationSchema>;
 
 export function Cart() {
+  const { createAnOrder } = useContext(CartContext);
+
   const addressForm = useForm<AddressFormData>({
     resolver: zodResolver(newRequestFormValidationSchema),
     defaultValues: {
@@ -43,8 +46,8 @@ export function Cart() {
     formState: { errors },
   } = addressForm;
 
-  function handleRequest(data: AddressFormData) {
-    console.log(data);
+  function handleCreateNewOrder(data: AddressFormData) {
+    createAnOrder(data);
   }
 
   useEffect(() => {
@@ -78,7 +81,7 @@ export function Cart() {
   }, [errors]);
 
   return (
-    <form onSubmit={handleSubmit(handleRequest)}>
+    <form onSubmit={handleSubmit(handleCreateNewOrder)}>
       <CartContainer>
         <FormProvider {...addressForm}>
           <Frame>

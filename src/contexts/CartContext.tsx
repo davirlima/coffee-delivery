@@ -1,18 +1,25 @@
 import { createContext, ReactNode, useState } from "react";
 import { CoffeesProps } from "../data/coffees";
 import { produce } from "immer";
+import { AddressFormData } from "../pages/Cart";
 
-interface CartCoffeeProps extends CoffeesProps {
+export interface CartCoffeeProps extends CoffeesProps {
   quantity: number;
+}
+
+interface OrderProps extends AddressFormData {
+  coffees: CartCoffeeProps[];
 }
 
 interface CartContextProps {
   cartCoffee: CartCoffeeProps[];
+  order: OrderProps[];
+  totalCoffeesOnCart: number;
   addCoffeeInCart: (coffee: CoffeesProps) => void;
   changeCoffeeCartQuantity: (coffeeId: string, isAdd: boolean) => void;
   verifyIfCoffeeAlreadyStayOnCart: (coffeeId: string) => boolean;
   removeCoffeeFromCart: (coffeeId: string) => void;
-  totalCoffeesOnCart: number;
+  createAnOrder: (clientInformations: AddressFormData) => void;
 }
 
 export const CartContext = createContext({} as CartContextProps);
@@ -23,6 +30,7 @@ interface CartContextProviderProps {
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
   const [cartCoffee, setCartCoffee] = useState<CartCoffeeProps[]>([]);
+  const [order, setOrder] = useState<OrderProps[]>([]);
 
   const totalCoffeesOnCart = cartCoffee.length;
 
@@ -71,6 +79,17 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     setCartCoffee(newCartCoffee);
   }
 
+  function createAnOrder(clientInformations: AddressFormData) {
+    const orderWithCoffees: OrderProps = {
+      ...clientInformations,
+      coffees: cartCoffee,
+    };
+    const newOrder = produce(order, (draft) => {
+      draft.push(orderWithCoffees);
+    });
+    setOrder(newOrder);
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -80,6 +99,8 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         verifyIfCoffeeAlreadyStayOnCart,
         removeCoffeeFromCart,
         totalCoffeesOnCart,
+        createAnOrder,
+        order,
       }}
     >
       {children}
