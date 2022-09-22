@@ -1,255 +1,93 @@
-import {
-  ButtonsPaymentContainer,
-  CartContainer,
-  CoffeeCardContainer,
-  CountButton,
-  FormAddressContainer,
-  Frame,
-  RemoveButton,
-  RequestButton,
-  RequestContainer,
-  SelectedCoffeesContainer,
-  ValuesInfomationContainer,
-} from "./styles";
-import {
-  MapPinLine,
-  CurrencyDollar,
-  CreditCard,
-  Bank,
-  Money,
-  Minus,
-  Plus,
-  Trash,
-} from "phosphor-react";
-import { useContext, useEffect } from "react";
-import { CartContext } from "../../contexts/CartContext";
+import { CartContainer, Frame } from "./styles";
+import { FormProvider, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as zod from "zod";
+import { Request } from "./components/Request";
+import { SelectedCoffees } from "./components/SelectedCoffees";
 import { toast } from "react-toastify";
-import { useForm } from "react-hook-form";
-import { normalizeCEP } from "../../utils/formMasks";
+import { useEffect } from "react";
 
-interface FormAddressData {
-  cep: string;
-  street: string;
-  number: string;
-  complement?: string;
-  neighborhood: string;
-  city: string;
-  state: string;
-}
+const newAddressFormValidationSchema = zod.object({
+  cep: zod
+    .string()
+    .min(9, "Informe um CEP válido")
+    .max(9, "Informe um CEP válido"),
+  street: zod.string().min(3, "Informe uma rua válida"),
+  number: zod.number().min(1, "Informe uma numeração válida"),
+  complement: zod.string().min(3, "Informe um complemento válido").optional(),
+  neighborhood: zod.string().min(3, "Informe um bairro válido"),
+  city: zod.string().min(4, "Informe uma cidade válida"),
+  state: zod.string().min(2, "Informe um estado válido").max(2),
+});
+
+type AddressFormData = zod.infer<typeof newAddressFormValidationSchema>;
 
 export function Cart() {
-  const { cartCoffee, changeCoffeeCartQuantity, removeCoffeeFromCart } =
-    useContext(CartContext);
-
-  function calculateTotalItemValue() {
-    const total = cartCoffee.reduce(
-      (initialValue, currentValue) =>
-        initialValue +
-        parseFloat(currentValue.value.replace(",", ".")) *
-          currentValue.quantity,
-      0
-    );
-    return total.toFixed(2).replace(".", ",");
-  }
-
-  function calculateTotalRequestValue() {
-    const total = parseFloat(calculateTotalItemValue()) + 3.5;
-    return total.toFixed(2).replace(".", ",");
-  }
-
-  const { register, handleSubmit, setValue, setFocus, watch } = useForm();
-
-  register("cep", {
-    onBlur: (e) => {
-      fetch(`https://viacep.com.br/ws/${e.target.value}/json/`)
-        .then((res) => res.json())
-        .then((data) => {
-          setValue("street", data.logradouro);
-          setValue("neighborhood", data.bairro);
-          setValue("city", data.localidade);
-          setValue("state", data.uf);
-          setFocus("number");
-        });
+  const addressForm = useForm<AddressFormData>({
+    resolver: zodResolver(newAddressFormValidationSchema),
+    defaultValues: {
+      cep: "",
+      street: "",
+      number: undefined,
+      neighborhood: "",
+      city: "",
+      state: "",
     },
   });
 
-  const cep = watch("cep");
-  useEffect(() => {
-    const nomalizedCEP = normalizeCEP(cep);
-    setValue("cep", nomalizedCEP);
-  }, [cep]);
+  const {
+    handleSubmit,
+    formState: { errors },
+  } = addressForm;
 
-  function handleRequest(data: any) {
+  function handleRequest(data: AddressFormData) {
     console.log(data);
   }
 
+  useEffect(() => {
+    if (Object.keys(errors).length == 6) {
+      toast.warning("Verifique o formulário de endereço");
+    } else {
+      if (errors.cep?.type) {
+        toast.warning(`${errors.cep.message}`);
+      }
+      if (errors.street?.type) {
+        toast.warning(`${errors.street.message}`);
+      }
+      if (errors.number?.type) {
+        errors.number.message === "Expected number, received nan"
+          ? toast.warning("Informe o número da residência")
+          : toast.warning(`${errors.number.message}`);
+      }
+      if (errors.complement?.type) {
+        toast.warning(`${errors.complement.message}`);
+      }
+      if (errors.neighborhood?.type) {
+        toast.warning(`${errors.neighborhood.message}`);
+      }
+      if (errors.city?.type) {
+        toast.warning(`${errors.city.message}`);
+      }
+    }
+  }, [errors]);
+
   return (
-    <CartContainer>
-      <Frame>
-        <h1>Complete seu pedido</h1>
+    <form onSubmit={handleSubmit(handleRequest)}>
+      <CartContainer>
+        <FormProvider {...addressForm}>
+          <Frame>
+            <h1>Complete seu pedido</h1>
 
-        <RequestContainer>
-          <div className="header">
-            <MapPinLine size={22} className="icon-yellow_dark" />
-            <div>
-              <h2>Endereço de entrega</h2>
-              <p>Informe o endereço onde deseja receber seu pedido</p>
-            </div>
-          </div>
+            <Request />
+          </Frame>
 
-          <FormAddressContainer onSubmit={handleSubmit(handleRequest)}>
-            <input
-              type="text"
-              placeholder="CEP"
-              id="cep"
-              {...register("cep")}
-            />
-            <input type="text" placeholder="Rua" {...register("street")} />
-            <div>
-              <input
-                type="text"
-                placeholder="Número"
-                id="numero"
-                {...register("number")}
-              />
-              <input type="text" placeholder="Complemento" id="complemento" />
-            </div>
-            <div>
-              <input
-                type="text"
-                placeholder="Bairro"
-                id="bairro"
-                {...register("neighborhood")}
-              />
-              <input
-                type="text"
-                placeholder="Cidade"
-                id="cidade"
-                {...register("city")}
-              />
-              <input
-                type="text"
-                placeholder="UF"
-                id="uf"
-                {...register("state")}
-              />
-            </div>
-          </FormAddressContainer>
-        </RequestContainer>
+          <Frame>
+            <h1>Cafés selecionados</h1>
 
-        <RequestContainer>
-          <div className="header">
-            <CurrencyDollar size={22} className="icon-purple" />
-            <div>
-              <h2>Pagamento</h2>
-              <p>
-                O pagamento é feito na entrega. Escolha a forma que deseja pagar
-              </p>
-            </div>
-          </div>
-
-          <ButtonsPaymentContainer>
-            <div>
-              <input type="radio" id="credit" name="payment" />
-              <label htmlFor="credit">
-                <CreditCard className="icon" /> CARTÃO DE CRÉDITO
-              </label>
-            </div>
-            <div>
-              <input type="radio" id="debit" name="payment" />
-              <label htmlFor="debit">
-                <Bank className="icon" /> CARTÃO DE DÉBITO
-              </label>
-            </div>
-            <div>
-              <input type="radio" id="money" name="payment" />
-              <label htmlFor="money">
-                <Money className="icon" /> DINHEIRO
-              </label>
-            </div>
-          </ButtonsPaymentContainer>
-        </RequestContainer>
-      </Frame>
-
-      <Frame>
-        <h1>Cafés selecionados</h1>
-
-        <SelectedCoffeesContainer>
-          {cartCoffee.map((coffee) => {
-            return (
-              <CoffeeCardContainer key={coffee.id}>
-                <div className="information">
-                  <img
-                    src={coffee.image}
-                    alt={`Imagem de um ${coffee.name} em uma xícara a cima de um pires`}
-                  />
-
-                  <div className="details">
-                    <h3>{coffee.name}</h3>
-
-                    <div className="buttons">
-                      <CountButton>
-                        <button
-                          onClick={() => {
-                            if (coffee.quantity == 1) {
-                              toast.warning("A quantidade mínima é 1");
-                            } else {
-                              changeCoffeeCartQuantity(coffee.id, false);
-                            }
-                          }}
-                        >
-                          <Minus weight="bold" size={14} />
-                        </button>
-                        <span>{coffee.quantity}</span>
-                        <button
-                          onClick={() => {
-                            changeCoffeeCartQuantity(coffee.id, true);
-                          }}
-                        >
-                          <Plus weight="bold" size={14} />
-                        </button>
-                      </CountButton>
-
-                      <RemoveButton
-                        onClick={() => {
-                          removeCoffeeFromCart(coffee.id);
-                        }}
-                      >
-                        <Trash size={16} className="icon" />
-                        REMOVER
-                      </RemoveButton>
-                    </div>
-                  </div>
-                </div>
-
-                <h3 className="value">R${coffee.value}</h3>
-              </CoffeeCardContainer>
-            );
-          })}
-
-          <ValuesInfomationContainer>
-            <div>
-              <p>Total de itens</p>
-              <p>R$ {calculateTotalItemValue()}</p>
-            </div>
-            <div>
-              <p>Entrega</p>
-              <p>R$ {cartCoffee.length !== 0 ? "3,50" : "0,00"}</p>
-            </div>
-            <div className="total">
-              <p>Total</p>
-              <p>
-                R${" "}
-                {cartCoffee.length !== 0
-                  ? calculateTotalRequestValue()
-                  : "0,00"}
-              </p>
-            </div>
-          </ValuesInfomationContainer>
-
-          <RequestButton>CONFIRMAR PEDIDO</RequestButton>
-        </SelectedCoffeesContainer>
-      </Frame>
-    </CartContainer>
+            <SelectedCoffees />
+          </Frame>
+        </FormProvider>
+      </CartContainer>
+    </form>
   );
 }
