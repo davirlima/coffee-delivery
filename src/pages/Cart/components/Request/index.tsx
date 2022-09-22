@@ -55,7 +55,13 @@ export function Request() {
         </div>
 
         <FormAddressContainer>
-          <input type="text" placeholder="CEP" id="cep" {...register("cep")} />
+          <input
+            type="text"
+            placeholder="CEP"
+            id="cep"
+            {...register("cep")}
+            maxLength={9}
+          />
 
           <input type="text" placeholder="Rua" {...register("street")} />
 
