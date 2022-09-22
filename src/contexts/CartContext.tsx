@@ -7,7 +7,7 @@ interface CartCoffeeProps extends CoffeesProps {
 }
 
 interface CartContextProps {
-  // cartCoffee: CartCoffeeProps[];
+  cartCoffee: CartCoffeeProps[];
   addCoffeeInCart: (coffee: CoffeesProps) => void;
   changeCoffeeCartQuantity: (coffeeId: string, isAdd: boolean) => void;
   verifyIfCoffeeAlreadyStayOnCart: (coffeeId: string) => boolean;
@@ -62,7 +62,8 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   return (
     <CartContext.Provider
       value={{
-        /*cartCoffee,*/ addCoffeeInCart,
+        cartCoffee,
+        addCoffeeInCart,
         changeCoffeeCartQuantity,
         verifyIfCoffeeAlreadyStayOnCart,
       }}

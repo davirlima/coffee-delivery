@@ -21,10 +21,16 @@ import {
   Plus,
   Trash,
 } from "phosphor-react";
-import tradicional from "../../assets/KindsOfCoffees/tradicional.png";
-import latte from "../../assets/KindsOfCoffees/latte.png";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/CartContext";
 
 export function Cart() {
+  const {
+    cartCoffee,
+    changeCoffeeCartQuantity,
+    verifyIfCoffeeAlreadyStayOnCart,
+  } = useContext(CartContext);
+
   return (
     <CartContainer>
       <Frame>
@@ -91,63 +97,50 @@ export function Cart() {
         <h1>Cafés selecionados</h1>
 
         <SelectedCoffeesContainer>
-          <CoffeeCardContainer>
-            <div className="information">
-              <img src={tradicional} alt="" />
+          {cartCoffee.map((coffee) => {
+            return (
+              <CoffeeCardContainer>
+                <div className="information">
+                  <img
+                    src={coffee.image}
+                    alt={`Imagem de um ${coffee.name} em uma xícara a cima de um pires`}
+                  />
 
-              <div className="details">
-                <h3>Expresso Tradicional</h3>
+                  <div className="details">
+                    <h3>{coffee.name}</h3>
 
-                <div className="buttons">
-                  <CountButton>
-                    <button>
-                      <Minus weight="bold" size={14} />
-                    </button>
-                    <span>1</span>
-                    <button>
-                      <Plus weight="bold" size={14} />
-                    </button>
-                  </CountButton>
+                    <div className="buttons">
+                      <CountButton>
+                        <button
+                          onClick={() => {
+                            changeCoffeeCartQuantity(coffee.id, false);
+                          }}
+                          disabled={coffee.quantity == 1}
+                        >
+                          <Minus weight="bold" size={14} />
+                        </button>
+                        <span>{coffee.quantity}</span>
+                        <button
+                          onClick={() => {
+                            changeCoffeeCartQuantity(coffee.id, true);
+                          }}
+                        >
+                          <Plus weight="bold" size={14} />
+                        </button>
+                      </CountButton>
 
-                  <RemoveButton>
-                    <Trash size={16} className="icon" />
-                    REMOVER
-                  </RemoveButton>
+                      <RemoveButton>
+                        <Trash size={16} className="icon" />
+                        REMOVER
+                      </RemoveButton>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
 
-            <h3 className="value">R$9,90</h3>
-          </CoffeeCardContainer>
-
-          <CoffeeCardContainer>
-            <div className="information">
-              <img src={latte} alt="" />
-
-              <div className="details">
-                <h3>Latte</h3>
-
-                <div className="buttons">
-                  <CountButton>
-                    <button>
-                      <Minus weight="bold" size={14} />
-                    </button>
-                    <span>1</span>
-                    <button>
-                      <Plus weight="bold" size={14} />
-                    </button>
-                  </CountButton>
-
-                  <RemoveButton>
-                    <Trash size={16} className="icon" />
-                    REMOVER
-                  </RemoveButton>
-                </div>
-              </div>
-            </div>
-
-            <h3 className="value">R$9,90</h3>
-          </CoffeeCardContainer>
+                <h3 className="value">R$9,90</h3>
+              </CoffeeCardContainer>
+            );
+          })}
 
           <ValuesInfomationContainer>
             <div>
