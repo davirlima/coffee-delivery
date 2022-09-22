@@ -37,7 +37,8 @@ Aplicação Web de um E-Commerce com a funcionalidade do carrinho. Feito utiliza
 - styled-components;
 - react-router;
 - phosphor-react;
-- immer.
+- immer;
+- uuid.
 
 ## :hammer: Funcionalidades:
 
