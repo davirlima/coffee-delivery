@@ -7,7 +7,7 @@ import { SelectedCoffees } from "./components/SelectedCoffees";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 
-const newAddressFormValidationSchema = zod.object({
+const newRequestFormValidationSchema = zod.object({
   cep: zod
     .string()
     .min(9, "Informe um CEP válido")
@@ -18,13 +18,15 @@ const newAddressFormValidationSchema = zod.object({
   neighborhood: zod.string().min(3, "Informe um bairro válido"),
   city: zod.string().min(4, "Informe uma cidade válida"),
   state: zod.string().min(2, "Informe um estado válido").max(2),
+
+  payment: zod.string().min(1, "Selecione uma forma de pagamento"),
 });
 
-type AddressFormData = zod.infer<typeof newAddressFormValidationSchema>;
+type AddressFormData = zod.infer<typeof newRequestFormValidationSchema>;
 
 export function Cart() {
   const addressForm = useForm<AddressFormData>({
-    resolver: zodResolver(newAddressFormValidationSchema),
+    resolver: zodResolver(newRequestFormValidationSchema),
     defaultValues: {
       cep: "",
       street: "",
@@ -32,6 +34,7 @@ export function Cart() {
       neighborhood: "",
       city: "",
       state: "",
+      payment: "",
     },
   });
 
@@ -67,6 +70,9 @@ export function Cart() {
       }
       if (errors.city?.type) {
         toast.warning(`${errors.city.message}`);
+      }
+      if (errors.payment?.type) {
+        toast.warning(`${errors.payment.message}`);
       }
     }
   }, [errors]);

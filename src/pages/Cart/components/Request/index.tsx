@@ -108,19 +108,34 @@ export function Request() {
 
         <ButtonsPaymentContainer>
           <div>
-            <input type="radio" id="credit" name="payment" />
+            <input
+              type="radio"
+              id="credit"
+              {...register("payment")}
+              value="creditCard"
+            />
             <label htmlFor="credit">
               <CreditCard className="icon" /> CARTÃO DE CRÉDITO
             </label>
           </div>
           <div>
-            <input type="radio" id="debit" name="payment" />
+            <input
+              type="radio"
+              id="debit"
+              {...register("payment")}
+              value="debitCard"
+            />
             <label htmlFor="debit">
               <Bank className="icon" /> CARTÃO DE DÉBITO
             </label>
           </div>
           <div>
-            <input type="radio" id="money" name="payment" />
+            <input
+              type="radio"
+              id="money"
+              {...register("payment")}
+              value="money"
+            />
             <label htmlFor="money">
               <Money className="icon" /> DINHEIRO
             </label>
