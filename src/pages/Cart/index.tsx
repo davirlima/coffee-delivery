@@ -21,10 +21,11 @@ import {
   Plus,
   Trash,
 } from "phosphor-react";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CartContext } from "../../contexts/CartContext";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
+import { normalizeCEP } from "../../utils/formMasks";
 
 interface FormAddressData {
   cep: string;
@@ -56,7 +57,7 @@ export function Cart() {
     return total.toFixed(2).replace(".", ",");
   }
 
-  const { register, handleSubmit, setValue, setFocus } = useForm();
+  const { register, handleSubmit, setValue, setFocus, watch } = useForm();
 
   register("cep", {
     onBlur: (e) => {
@@ -71,6 +72,12 @@ export function Cart() {
         });
     },
   });
+
+  const cep = watch("cep");
+  useEffect(() => {
+    const nomalizedCEP = normalizeCEP(cep);
+    setValue("cep", nomalizedCEP);
+  }, [cep]);
 
   function handleRequest(data: any) {
     console.log(data);
