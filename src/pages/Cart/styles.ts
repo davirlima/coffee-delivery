@@ -4,7 +4,7 @@ export const CartContainer = styled.main`
   width: 1440px;
   margin: 2.5rem auto;
   display: grid;
-  grid-template-columns: 40rem 28rem;
+  grid-template-columns: 58.8% 41.17%;
   column-gap: 2rem;
 
   @media screen and (max-width: 1440px) {
@@ -98,21 +98,22 @@ export const FormAddressContainer = styled.form`
   #cep,
   #numero,
   #bairro {
-    width: 12.5rem;
+    width: 35.71%;
   }
   #complemento {
-    width: 21.75rem;
+    width: 62.14%;
   }
   #cidade {
-    width: 17.25rem;
+    width: 49.28%;
   }
   #uf {
-    width: 3.75rem;
+    width: 10.71%;
   }
 `;
 
 export const ButtonsPaymentContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 0.75rem;
 
   input {
@@ -190,6 +191,7 @@ export const CoffeeCardContainer = styled.div`
 
       .buttons {
         display: flex;
+        flex-wrap: wrap;
         gap: 0.5rem;
       }
     }
@@ -198,6 +200,20 @@ export const CoffeeCardContainer = styled.div`
   .value {
     font-size: 1rem;
     font-weight: 700;
+  }
+
+  @media screen and (max-width: 1024px) and (min-width: 801px) {
+    justify-content: space-around;
+    .information {
+      img {
+        width: 3.5rem;
+      }
+    }
+    .details {
+      h3 {
+        font-size: 0.7rem;
+      }
+    }
   }
 `;
 
