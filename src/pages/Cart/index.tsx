@@ -25,7 +25,8 @@ import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
 
 export function Cart() {
-  const { cartCoffee, changeCoffeeCartQuantity } = useContext(CartContext);
+  const { cartCoffee, changeCoffeeCartQuantity, removeCoffeeFromCart } =
+    useContext(CartContext);
 
   function calculateTotalItemValue() {
     const total = cartCoffee.reduce(
@@ -141,7 +142,11 @@ export function Cart() {
                         </button>
                       </CountButton>
 
-                      <RemoveButton>
+                      <RemoveButton
+                        onClick={() => {
+                          removeCoffeeFromCart(coffee.id);
+                        }}
+                      >
                         <Trash size={16} className="icon" />
                         REMOVER
                       </RemoveButton>

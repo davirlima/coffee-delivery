@@ -11,6 +11,7 @@ interface CartContextProps {
   addCoffeeInCart: (coffee: CoffeesProps) => void;
   changeCoffeeCartQuantity: (coffeeId: string, isAdd: boolean) => void;
   verifyIfCoffeeAlreadyStayOnCart: (coffeeId: string) => boolean;
+  removeCoffeeFromCart: (coffeeId: string) => void;
 }
 
 export const CartContext = createContext({} as CartContextProps);
@@ -59,6 +60,14 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     }
   }
 
+  function removeCoffeeFromCart(coffeeId: string) {
+    const position = cartCoffee.findIndex((coffee) => coffee.id === coffeeId);
+    const newCartCoffee = produce(cartCoffee, (draft) => {
+      draft.splice(position, 1);
+    });
+    setCartCoffee(newCartCoffee);
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -66,6 +75,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         addCoffeeInCart,
         changeCoffeeCartQuantity,
         verifyIfCoffeeAlreadyStayOnCart,
+        removeCoffeeFromCart,
       }}
     >
       {children}
