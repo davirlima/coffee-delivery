@@ -23,6 +23,7 @@ import {
 } from "phosphor-react";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
+import { toast } from "react-toastify";
 
 export function Cart() {
   const { cartCoffee, changeCoffeeCartQuantity, removeCoffeeFromCart } =
@@ -127,7 +128,7 @@ export function Cart() {
                         <button
                           onClick={() => {
                             if (coffee.quantity == 1) {
-                              alert("A quantidade mínima de um café é 1");
+                              toast.warning("A quantidade mínima é 1");
                             } else {
                               changeCoffeeCartQuantity(coffee.id, false);
                             }

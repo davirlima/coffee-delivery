@@ -10,6 +10,7 @@ import {
 import { Minus, Plus, ShoppingCartSimple } from "phosphor-react";
 import { useContext, useState } from "react";
 import { CartContext } from "../../../../../../contexts/CartContext";
+import { toast } from "react-toastify";
 
 export function CoffeeCard(coffee: CoffeesProps) {
   const {
@@ -50,7 +51,7 @@ export function CoffeeCard(coffee: CoffeesProps) {
             <button
               onClick={() => {
                 if (quantityOfCoffee == 1) {
-                  alert("A quantidade mínima de um café é 1");
+                  toast.warning("A quantidade mínima é 1");
                 } else {
                   setQuantityOfCoffee(quantityOfCoffee - 1);
                   changeCoffeeCartQuantity(coffee.id, false);
@@ -63,7 +64,7 @@ export function CoffeeCard(coffee: CoffeesProps) {
             <button
               onClick={() => {
                 if (!verifyIfCoffeeAlreadyStayOnCart(coffee.id)) {
-                  alert("Primeiramente, adicione o café no carrinho!");
+                  toast.warning("Primeiramente, adicione o café no carrinho");
                 } else {
                   setQuantityOfCoffee(quantityOfCoffee + 1);
                   changeCoffeeCartQuantity(coffee.id, true);
