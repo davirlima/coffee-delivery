@@ -24,6 +24,17 @@ import {
 import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
 import { toast } from "react-toastify";
+import { useForm } from "react-hook-form";
+
+interface FormAddressData {
+  cep: string;
+  street: string;
+  number: string;
+  complement?: string;
+  neighborhood: string;
+  city: string;
+  state: string;
+}
 
 export function Cart() {
   const { cartCoffee, changeCoffeeCartQuantity, removeCoffeeFromCart } =
@@ -45,6 +56,26 @@ export function Cart() {
     return total.toFixed(2).replace(".", ",");
   }
 
+  const { register, handleSubmit, setValue, setFocus } = useForm();
+
+  register("cep", {
+    onBlur: (e) => {
+      fetch(`https://viacep.com.br/ws/${e.target.value}/json/`)
+        .then((res) => res.json())
+        .then((data) => {
+          setValue("street", data.logradouro);
+          setValue("neighborhood", data.bairro);
+          setValue("city", data.localidade);
+          setValue("state", data.uf);
+          setFocus("number");
+        });
+    },
+  });
+
+  function handleRequest(data: any) {
+    console.log(data);
+  }
+
   return (
     <CartContainer>
       <Frame>
@@ -59,17 +90,42 @@ export function Cart() {
             </div>
           </div>
 
-          <FormAddressContainer action="">
-            <input type="text" placeholder="CEP" id="cep" />
-            <input type="text" placeholder="Rua" />
+          <FormAddressContainer onSubmit={handleSubmit(handleRequest)}>
+            <input
+              type="text"
+              placeholder="CEP"
+              id="cep"
+              {...register("cep")}
+            />
+            <input type="text" placeholder="Rua" {...register("street")} />
             <div>
-              <input type="text" placeholder="Número" id="numero" />
+              <input
+                type="text"
+                placeholder="Número"
+                id="numero"
+                {...register("number")}
+              />
               <input type="text" placeholder="Complemento" id="complemento" />
             </div>
             <div>
-              <input type="text" placeholder="Bairro" id="bairro" />
-              <input type="text" placeholder="Cidade" id="cidade" />
-              <input type="text" placeholder="UF" id="uf" />
+              <input
+                type="text"
+                placeholder="Bairro"
+                id="bairro"
+                {...register("neighborhood")}
+              />
+              <input
+                type="text"
+                placeholder="Cidade"
+                id="cidade"
+                {...register("city")}
+              />
+              <input
+                type="text"
+                placeholder="UF"
+                id="uf"
+                {...register("state")}
+              />
             </div>
           </FormAddressContainer>
         </RequestContainer>
@@ -107,6 +163,7 @@ export function Cart() {
           </ButtonsPaymentContainer>
         </RequestContainer>
       </Frame>
+
       <Frame>
         <h1>Cafés selecionados</h1>
 
