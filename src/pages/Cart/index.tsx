@@ -39,8 +39,8 @@ export function Cart() {
   }
 
   function calculateTotalRequestValue() {
-    const total = calculateTotalItemValue() + 3.5;
-    return parseFloat(total).toFixed(2);
+    const total = parseFloat(calculateTotalItemValue()) + 3.5;
+    return total.toFixed(2);
   }
 
   return (
