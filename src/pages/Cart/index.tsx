@@ -35,12 +35,12 @@ export function Cart() {
           currentValue.quantity,
       0
     );
-    return total.toFixed(2);
+    return total.toFixed(2).replace(".", ",");
   }
 
   function calculateTotalRequestValue() {
     const total = parseFloat(calculateTotalItemValue()) + 3.5;
-    return total.toFixed(2);
+    return total.toFixed(2).replace(".", ",");
   }
 
   return (
