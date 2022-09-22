@@ -47,7 +47,12 @@ export const RequestButton = styled.button`
   font-size: 0.875rem;
   text-transform: uppercase;
 
-  :hover {
+  :hover:not(:disabled) {
     background-color: ${(props) => props.theme.yellow_dark};
+  }
+
+  :disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
   }
 `;

@@ -8,7 +8,7 @@ import {
 } from "./styles";
 
 export function SelectedCoffees() {
-  const { cartCoffee } = useContext(CartContext);
+  const { cartCoffee, totalCoffeesOnCart } = useContext(CartContext);
 
   function calculateTotalItemValue() {
     const total = cartCoffee.reduce(
@@ -58,7 +58,9 @@ export function SelectedCoffees() {
         </div>
       </ValuesInfomationContainer>
 
-      <RequestButton type="submit">CONFIRMAR PEDIDO</RequestButton>
+      <RequestButton type="submit" disabled={totalCoffeesOnCart == 0}>
+        CONFIRMAR PEDIDO
+      </RequestButton>
     </SelectedCoffeesContainer>
   );
 }

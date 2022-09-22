@@ -120,7 +120,7 @@ export function Request() {
             </label>
           </div>
           <div>
-            <input type="radio" id="money" name="payment" checked />
+            <input type="radio" id="money" name="payment" />
             <label htmlFor="money">
               <Money className="icon" /> DINHEIRO
             </label>
