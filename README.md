@@ -39,7 +39,9 @@ Aplicação Web de um E-Commerce com a funcionalidade do carrinho. Feito utiliza
 - phosphor-react;
 - immer;
 - uuid;
-- react toastify.
+- react-toastify;
+- react-hook-form;
+- zod.
 
 ## :hammer: Funcionalidades:
 
