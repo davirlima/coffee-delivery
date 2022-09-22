@@ -30,15 +30,17 @@ export function Cart() {
   function calculateTotalItemValue() {
     const total = cartCoffee.reduce(
       (initialValue, currentValue) =>
-        initialValue + parseFloat(currentValue.value.replace(",", ".")),
+        initialValue +
+        parseFloat(currentValue.value.replace(",", ".")) *
+          currentValue.quantity,
       0
     );
-    return total;
+    return total.toFixed(2);
   }
 
   function calculateTotalRequestValue() {
     const total = calculateTotalItemValue() + 3.5;
-    return total;
+    return parseFloat(total).toFixed(2);
   }
 
   return (
@@ -163,7 +165,12 @@ export function Cart() {
             </div>
             <div className="total">
               <p>Total</p>
-              <p>R$ {calculateTotalRequestValue()}</p>
+              <p>
+                R${" "}
+                {cartCoffee.length !== 0
+                  ? calculateTotalRequestValue()
+                  : "0,00"}
+              </p>
             </div>
           </ValuesInfomationContainer>
 
