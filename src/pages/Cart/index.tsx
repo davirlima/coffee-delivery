@@ -112,7 +112,7 @@ export function Cart() {
         <SelectedCoffeesContainer>
           {cartCoffee.map((coffee) => {
             return (
-              <CoffeeCardContainer>
+              <CoffeeCardContainer key={coffee.id}>
                 <div className="information">
                   <img
                     src={coffee.image}

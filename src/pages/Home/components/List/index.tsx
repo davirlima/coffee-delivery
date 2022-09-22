@@ -19,7 +19,7 @@ export function List({ filter }: ListProps) {
         ? coffees.map((coffee) => {
             return (
               <CoffeeCard
-                key={coffee.name}
+                key={coffee.id}
                 image={coffee.image}
                 name={coffee.name}
                 description={coffee.description}
@@ -34,7 +34,7 @@ export function List({ filter }: ListProps) {
               return (
                 <CoffeeCard
                   id={coffee.id}
-                  key={coffee.name}
+                  key={coffee.id}
                   image={coffee.image}
                   name={coffee.name}
                   description={coffee.description}
