@@ -1,4 +1,4 @@
-import { CoffeesProps } from "../..";
+import { CoffeesProps } from "../../../../../../data/coffees";
 import {
   BuyContainer,
   Card,
@@ -8,8 +8,18 @@ import {
   ImageContainer,
 } from "./styles";
 import { Minus, Plus, ShoppingCartSimple } from "phosphor-react";
+import { useContext, useState } from "react";
+import { CartContext } from "../../../../../../contexts/CartContext";
 
 export function CoffeeCard(coffee: CoffeesProps) {
+  const {
+    addCoffeeInCart,
+    changeCoffeeCartQuantity,
+    verifyIfCoffeeAlreadyStayOnCart,
+  } = useContext(CartContext);
+
+  const [quantityOfCoffee, setQuantityOfCoffee] = useState(1);
+
   return (
     <Card>
       <ImageContainer>
@@ -37,16 +47,32 @@ export function CoffeeCard(coffee: CoffeesProps) {
 
         <div>
           <CounterContainer>
-            <button>
+            <button
+              onClick={() => {
+                setQuantityOfCoffee(quantityOfCoffee - 1);
+                changeCoffeeCartQuantity(coffee.id, false);
+              }}
+              disabled={quantityOfCoffee == 1}
+            >
               <Minus weight="bold" size={14} />
             </button>
-            1
-            <button>
+            {quantityOfCoffee}
+            <button
+              onClick={() => {
+                setQuantityOfCoffee(quantityOfCoffee + 1);
+                changeCoffeeCartQuantity(coffee.id, true);
+              }}
+              disabled={!verifyIfCoffeeAlreadyStayOnCart(coffee.id)}
+            >
               <Plus weight="bold" size={14} />
             </button>
           </CounterContainer>
 
-          <CartButton>
+          <CartButton
+            onClick={() => {
+              addCoffeeInCart(coffee);
+            }}
+          >
             <ShoppingCartSimple weight="fill" size={19.74} />
           </CartButton>
         </div>
