@@ -25,11 +25,21 @@ import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
 
 export function Cart() {
-  const {
-    cartCoffee,
-    changeCoffeeCartQuantity,
-    verifyIfCoffeeAlreadyStayOnCart,
-  } = useContext(CartContext);
+  const { cartCoffee, changeCoffeeCartQuantity } = useContext(CartContext);
+
+  function calculateTotalItemValue() {
+    const total = cartCoffee.reduce(
+      (initialValue, currentValue) =>
+        initialValue + parseFloat(currentValue.value.replace(",", ".")),
+      0
+    );
+    return total;
+  }
+
+  function calculateTotalRequestValue() {
+    const total = calculateTotalItemValue() + 3.5;
+    return total;
+  }
 
   return (
     <CartContainer>
@@ -137,7 +147,7 @@ export function Cart() {
                   </div>
                 </div>
 
-                <h3 className="value">R$9,90</h3>
+                <h3 className="value">R${coffee.value}</h3>
               </CoffeeCardContainer>
             );
           })}
@@ -145,15 +155,15 @@ export function Cart() {
           <ValuesInfomationContainer>
             <div>
               <p>Total de itens</p>
-              <p>R$ 00,00</p>
+              <p>R$ {calculateTotalItemValue()}</p>
             </div>
             <div>
               <p>Entrega</p>
-              <p>R$ 3,50</p>
+              <p>R$ {cartCoffee.length !== 0 ? "3,50" : "0,00"}</p>
             </div>
             <div className="total">
               <p>Total</p>
-              <p>R$ 00,00</p>
+              <p>R$ {calculateTotalRequestValue()}</p>
             </div>
           </ValuesInfomationContainer>
 
