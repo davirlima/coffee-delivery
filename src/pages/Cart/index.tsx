@@ -126,9 +126,12 @@ export function Cart() {
                       <CountButton>
                         <button
                           onClick={() => {
-                            changeCoffeeCartQuantity(coffee.id, false);
+                            if (coffee.quantity == 1) {
+                              alert("A quantidade mínima de um café é 1");
+                            } else {
+                              changeCoffeeCartQuantity(coffee.id, false);
+                            }
                           }}
-                          disabled={coffee.quantity == 1}
                         >
                           <Minus weight="bold" size={14} />
                         </button>

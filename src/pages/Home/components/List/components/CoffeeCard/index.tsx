@@ -49,20 +49,26 @@ export function CoffeeCard(coffee: CoffeesProps) {
           <CounterContainer>
             <button
               onClick={() => {
-                setQuantityOfCoffee(quantityOfCoffee - 1);
-                changeCoffeeCartQuantity(coffee.id, false);
+                if (quantityOfCoffee == 1) {
+                  alert("A quantidade mínima de um café é 1");
+                } else {
+                  setQuantityOfCoffee(quantityOfCoffee - 1);
+                  changeCoffeeCartQuantity(coffee.id, false);
+                }
               }}
-              disabled={quantityOfCoffee == 1}
             >
               <Minus weight="bold" size={14} />
             </button>
             {quantityOfCoffee}
             <button
               onClick={() => {
-                setQuantityOfCoffee(quantityOfCoffee + 1);
-                changeCoffeeCartQuantity(coffee.id, true);
+                if (!verifyIfCoffeeAlreadyStayOnCart(coffee.id)) {
+                  alert("Primeiramente, adicione o café no carrinho!");
+                } else {
+                  setQuantityOfCoffee(quantityOfCoffee + 1);
+                  changeCoffeeCartQuantity(coffee.id, true);
+                }
               }}
-              disabled={!verifyIfCoffeeAlreadyStayOnCart(coffee.id)}
             >
               <Plus weight="bold" size={14} />
             </button>
