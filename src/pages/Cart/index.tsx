@@ -2,7 +2,7 @@ import { CartContainer, Frame } from "./styles";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
-import { Request } from "./components/Request";
+import { Order } from "./components/Order";
 import { SelectedCoffees } from "./components/SelectedCoffees";
 import { toast } from "react-toastify";
 import { useContext, useEffect } from "react";
@@ -87,7 +87,7 @@ export function Cart() {
           <Frame>
             <h1>Complete seu pedido</h1>
 
-            <Request />
+            <Order />
           </Frame>
 
           <Frame>

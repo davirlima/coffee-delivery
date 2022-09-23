@@ -15,7 +15,7 @@ import {
   RequestContainer,
 } from "./styles";
 
-export function Request() {
+export function Order() {
   const { register, setValue, setFocus, watch } = useFormContext();
 
   register("cep", {
