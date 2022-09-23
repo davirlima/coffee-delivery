@@ -2,6 +2,7 @@ import { OrderInformationContainer, SuccessRequestContainer } from "./styles";
 import { MapPin, Timer, CurrencyDollar } from "phosphor-react";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
+import illustration from "../../assets/successPageIllustration.svg";
 
 export function SuccessRequest() {
   const { order } = useContext(CartContext);
@@ -51,6 +52,10 @@ export function SuccessRequest() {
             </div>
           </div>
         </OrderInformationContainer>
+        <img
+          src={illustration}
+          alt="Ilustratção de um homem montado em uma motocilcleta roxa"
+        />
       </div>
     </SuccessRequestContainer>
   );
