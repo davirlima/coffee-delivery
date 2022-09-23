@@ -61,13 +61,26 @@ export const FormAddressContainer = styled.div`
     }
   }
 
+  .complement-input {
+    position: relative;
+    width: 62.14%;
+    #complemento {
+      width: 100%;
+    }
+    i {
+      position: absolute;
+      top: 50%;
+      right: 0.75rem;
+      transform: translate(0%, -50%);
+      color: ${(props) => props.theme.base_label};
+      font-size: 0.75rem;
+    }
+  }
+
   #cep,
   #numero,
   #bairro {
     width: 35.71%;
-  }
-  #complemento {
-    width: 62.14%;
   }
   #cidade {
     width: 49.28%;

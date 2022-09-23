@@ -74,7 +74,15 @@ export function Order() {
               min={1}
             />
 
-            <input type="text" placeholder="Complemento" id="complemento" />
+            <div className="complement-input">
+              <input
+                type="text"
+                placeholder="Complemento"
+                id="complemento"
+                {...register("complement")}
+              />
+              <i className="tag-optional">Opcional</i>
+            </div>
           </div>
           <div>
             <input
