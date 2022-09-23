@@ -37,11 +37,6 @@ export function SuccessRequest() {
             <div className="address">
               <p>
                 Entrega em <strong>{`${street}, ${number}`}</strong>
-                {/* {order[order.length - 1] !== undefined &&
-                order[order.length - 1].street}
-              , {order[order.length - 1].number}{" "}
-              {order[order.length - 1].complement != undefined &&
-                ` - ${order[order.length - 1].complement}`} */}
               </p>
               <p>{`${neighborhood} - ${city}, ${state}`}</p>
             </div>

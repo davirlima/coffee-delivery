@@ -30,7 +30,8 @@ export function CardCartCoffee(coffee: CardCartCoffeeProps) {
           <div className="buttons">
             <CountButton>
               <button
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault();
                   if (coffee.quantity == 1) {
                     toast.warning("A quantidade mínima é 1");
                   } else {
@@ -42,7 +43,8 @@ export function CardCartCoffee(coffee: CardCartCoffeeProps) {
               </button>
               <span>{coffee.quantity}</span>
               <button
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault();
                   changeCoffeeCartQuantity(coffee.id, true);
                 }}
               >

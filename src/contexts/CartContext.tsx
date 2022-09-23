@@ -52,7 +52,6 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         draft.push(coffeeWithQuantity);
       });
       setCartCoffee(newCartCoffee);
-      console.log(cartCoffee);
     }
   }
 
@@ -67,7 +66,6 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
           : (draft[position].quantity -= 1);
       });
       setCartCoffee(newCartCoffee);
-      console.log(cartCoffee);
     }
   }
 
