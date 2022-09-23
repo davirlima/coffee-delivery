@@ -75,6 +75,15 @@ export const FormAddressContainer = styled.div`
   #uf {
     width: 10.71%;
   }
+
+  @media screen and (max-width: 450px) {
+    #cidade {
+      width: 39.28%;
+    }
+    #uf {
+      width: 20.71%;
+    }
+  }
 `;
 
 export const ButtonsPaymentContainer = styled.div`

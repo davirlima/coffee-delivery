@@ -38,6 +38,26 @@ export const SuccessRequestContainer = styled.main`
     width: 100%;
     padding: 0 10%;
   }
+  @media screen and (max-width: 800px) {
+    img {
+      width: 50%;
+    }
+  }
+  @media screen and (max-width: 700px) {
+    align-items: center;
+    justify-content: center;
+    .success-text {
+      align-items: center;
+      text-align: center;
+    }
+    .content {
+      flex-direction: column;
+      gap: 2rem;
+      img {
+        width: 100%;
+      }
+    }
+  }
 `;
 
 export const OrderInformationContainer = styled.section`
