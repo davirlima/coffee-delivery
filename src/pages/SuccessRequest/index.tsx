@@ -7,6 +7,21 @@ import illustration from "../../assets/successPageIllustration.svg";
 export function SuccessRequest() {
   const { order } = useContext(CartContext);
 
+  const street = order[order.length - 1]?.street;
+  const number = order[order.length - 1]?.number;
+  const neighborhood = order[order.length - 1]?.neighborhood;
+  const city = order[order.length - 1]?.city;
+  const state = order[order.length - 1]?.state;
+  const payment = order[order.length - 1]?.payment;
+  const formatedPayment =
+    payment === "creditCard"
+      ? "Cartão de Crédito"
+      : payment === "debitCard"
+      ? "Cartão de Débito"
+      : payment === "money"
+      ? "Dinheiro"
+      : undefined;
+
   return (
     <SuccessRequestContainer>
       <div className="success-text">
@@ -21,14 +36,14 @@ export function SuccessRequest() {
             </div>
             <div className="address">
               <p>
-                Entrega em <strong>Rua João Daniel Matinelli, 102</strong>
+                Entrega em <strong>{`${street}, ${number}`}</strong>
                 {/* {order[order.length - 1] !== undefined &&
                 order[order.length - 1].street}
               , {order[order.length - 1].number}{" "}
               {order[order.length - 1].complement != undefined &&
                 ` - ${order[order.length - 1].complement}`} */}
               </p>
-              <p>Farrapos - Porto Alegre, RS</p>
+              <p>{`${neighborhood} - ${city}, ${state}`}</p>
             </div>
           </div>
 
@@ -47,8 +62,8 @@ export function SuccessRequest() {
               <CurrencyDollar weight="regular" size={16} />
             </div>
             <div className="address">
-              <p>Previsão na entrega</p>
-              <strong>Cartão de crédito</strong>
+              <p>Pagamento na entrega</p>
+              <strong>{formatedPayment}</strong>
             </div>
           </div>
         </OrderInformationContainer>

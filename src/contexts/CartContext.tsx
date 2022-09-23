@@ -88,6 +88,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
       draft.push(orderWithCoffees);
     });
     setOrder(newOrder);
+    setCartCoffee([]);
   }
 
   return (

@@ -7,6 +7,7 @@ import { SelectedCoffees } from "./components/SelectedCoffees";
 import { toast } from "react-toastify";
 import { useContext, useEffect } from "react";
 import { CartContext } from "../../contexts/CartContext";
+import { useNavigate } from "react-router-dom";
 
 const newRequestFormValidationSchema = zod.object({
   cep: zod
@@ -46,8 +47,11 @@ export function Cart() {
     formState: { errors },
   } = addressForm;
 
+  const navigate = useNavigate();
+
   function handleCreateNewOrder(data: AddressFormData) {
     createAnOrder(data);
+    navigate("/pedido-confirmado");
   }
 
   useEffect(() => {
