@@ -33,9 +33,9 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   const [order, setOrder] = useState<OrderProps[]>([]);
 
   useEffect(() => {
-    const getCoffeeOnStorage = localStorage.getItem("coffee");
-    if (getCoffeeOnStorage) {
-      setCartCoffee(JSON.parse(getCoffeeOnStorage));
+    const coffeeOnStorage = localStorage.getItem("coffee");
+    if (coffeeOnStorage) {
+      setCartCoffee(JSON.parse(coffeeOnStorage));
     }
   }, []);
 
@@ -88,6 +88,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
       draft.splice(position, 1);
     });
     setCartCoffee(newCartCoffee);
+    localStorage.setItem("coffee", JSON.stringify([]));
   }
 
   function createAnOrder(clientInformations: AddressFormData) {
@@ -100,6 +101,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     });
     setOrder(newOrder);
     setCartCoffee([]);
+    localStorage.setItem("coffee", JSON.stringify([]));
   }
 
   return (
