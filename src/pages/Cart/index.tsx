@@ -16,7 +16,7 @@ const newRequestFormValidationSchema = zod.object({
     .max(9, "Informe um CEP válido"),
   street: zod.string().min(3, "Informe uma rua válida"),
   number: zod.number().min(1, "Informe uma numeração válida"),
-  complement: zod.string().min(3, "Informe um complemento válido").optional(),
+  complement: zod.string(),
   neighborhood: zod.string().min(3, "Informe um bairro válido"),
   city: zod.string().min(4, "Informe uma cidade válida"),
   state: zod.string().min(2, "Informe um estado válido").max(2),
@@ -55,8 +55,8 @@ export function Cart() {
   }
 
   useEffect(() => {
-    if (Object.keys(errors).length == 6) {
-      toast.warning("Verifique o formulário de endereço");
+    if (Object.keys(errors).length >= 6) {
+      toast.warning("Verifique os formulários do pedido");
     } else {
       if (errors.cep?.type) {
         toast.warning(`${errors.cep.message}`);
