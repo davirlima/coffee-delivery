@@ -4,7 +4,7 @@ export const CartContainer = styled.main`
   width: 1440px;
   margin: 2.5rem auto;
   display: grid;
-  grid-template-columns: 58.8% 41.17%;
+  grid-template-columns: auto auto;
   column-gap: 2rem;
 
   @media screen and (max-width: 1440px) {
