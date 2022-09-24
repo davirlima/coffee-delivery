@@ -4,11 +4,9 @@
 
 # Coffe Delivery
 
-Aplicação Web de um E-Commerce com a funcionalidade do carrinho. Feito utilizando _ReactJS_.
+Aplicação Web front-end de um E-Commerce de cafés (fictício). Feito utilizando _ReactJS_.
 
-<!-- :link: <https://ignite-timer-davirlima.vercel.app/> :link: -->
-
-:construction: **Projeto em desenvolvimento** :construction:
+:link: <https://coffee-delivery-davirlima.vercel.app/> :link:
 
 </div>
 
@@ -46,41 +44,60 @@ Aplicação Web de um E-Commerce com a funcionalidade do carrinho. Feito utiliza
 ## :hammer: Funcionalidades:
 
 - **Listagem de produtos (cafés) disponíveis para compra;**
+- **Filtragem de produtos (cafés) por tipo;**
 - **Adicionar uma quantidade específicas de itens no carrinho;**
 - **Aumentar ou remover a quantidade de itens no carrinho;**
 - **Formulário para o usuário preencher o seu endereço;**
 - **Exibir o total de itens no carrinho no Header;**
 - **Exibir o valor total da soma de itens no carrinho multiplicados pelo valor.**
 
-<!--
 ## :computer: Interfaces:
 
 <div align="center">
   <img
-   src="https://user-images.githubusercontent.com/97968740/186976072-99c0eb02-235e-4eb3-bfd9-b9ca1dc4fbd7.png"
-   alt="Interface da Aplicação To do List, tema light, em Desktop e Laptop"
+   src="https://user-images.githubusercontent.com/97968740/192103635-b4e094dd-6bc6-46b9-9f14-e99cf0c436a5.png"
+   alt="Interface da Aplicação Coffee Delivery, tela home, em Desktop e Laptop"
    width=74%
   />
   <img
-   src="https://user-images.githubusercontent.com/97968740/186976329-70cdab9a-4473-47e0-b0d2-a7d8cfd63803.png"
-   alt="Interface da Aplicação To do List, tema light, em Mobile"
+   src="https://user-images.githubusercontent.com/97968740/192104672-73dad269-6d8c-45da-9761-664e81890e95.png"
+   alt="Interface da Aplicação Coffee Delivery, tela home, em Mobile"
    width=25%
   />
   <img
-   src="https://user-images.githubusercontent.com/97968740/186976587-693d3f77-abbf-4970-b7c7-a3c41173b63a.png"
-   alt="Interface da Aplicação To do List, tema dark, em Desktop e Laptop"
+   src="https://user-images.githubusercontent.com/97968740/192103708-2fea30a2-43bc-4c8f-b382-05d9f0e54956.png"
+   alt="Interface da Aplicação Coffee Delivery, lista de cafés, em Desktop e Laptop"
    width=74%
   />
   <img
-   src="https://user-images.githubusercontent.com/97968740/186976411-32f34e92-f6ae-4d33-9480-6ced1ae7f59c.png"
-   alt="Interface da Aplicação To do List, tema dark, em Desktop e Laptop"
+   src="https://user-images.githubusercontent.com/97968740/192104628-1196fe73-b20a-4f46-833c-c6db81472c3d.png"
+   alt="Interface da Aplicação Coffee Delivery, lista de cafés, em Mobile"
    width=25%
   />
   <img
-   src="https://user-images.githubusercontent.com/97968740/186977015-fb8fc144-fa5a-489c-beff-7b2114fb9f7a.gif"
+   src="https://user-images.githubusercontent.com/97968740/192104348-0b069aae-85d6-4647-bf70-a2618faf5960.png"
+   alt="Interface da Aplicação Coffee Delivery, pagina carrinho, em Desktop e Laptop"
+   width=74%
+  />
+  <img
+   src="https://user-images.githubusercontent.com/97968740/192104584-c9651210-25ea-42cf-92f7-cc9691fe244a.png"
+   alt="Interface da Aplicação Coffee Delivery, pagina carrinho, em Mobile"
+   width=25%
+  />
+  <img
+   src="https://user-images.githubusercontent.com/97968740/192104496-ef65c6a7-01a5-4678-ad1d-515c896981c4.png"
+   alt="Interface da Aplicação Coffee Delivery, pagina de confirmação de compra, em Desktop e Laptop"
+   width=74%
+  />
+  <img
+   src="https://user-images.githubusercontent.com/97968740/192104540-9c0e427a-e7dc-4483-a849-ecdf7df36649.png"
+   alt="Interface da Aplicação Coffee Delivery, pagina de confirmação de compra, em Mobile"
+   width=25%
+  />
+  <img
+   src="https://user-images.githubusercontent.com/97968740/192105292-195c1660-8932-405d-931f-f0f4927e7863.gif"
    alt="GIF demonstrativo da aplicação"
    width=99%
    align="center"
   />
 </div>
--->
