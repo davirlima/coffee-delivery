@@ -51,6 +51,32 @@ Aplicação Web front-end de um E-Commerce de cafés (fictício). Feito utilizan
 - **Exibir o total de itens no carrinho no Header;**
 - **Exibir o valor total da soma de itens no carrinho multiplicados pelo valor.**
 
+## :open_file_folder: Execute o projeto localmente
+
+:heavy_exclamation_mark: **Requisitos:** *Node.js v.16.17.0*
+
+1. Clone o repositório:
+
+ ~~~bash
+ git clone https://github.com/davirlima/coffee-delivery.git
+ ~~~
+ 
+2. Instale as dependências com o comando:
+
+  ~~~bash
+  npm install
+  # ou
+  yarn install
+  ~~~
+  
+3. Execute a aplicação com o comando:
+
+  ~~~bash
+  npm run dev
+  # ou
+  yarn dev
+  ~~~
+
 ## :computer: Interfaces:
 
 <div align="center">
