@@ -4,7 +4,7 @@
 
 # Coffe Delivery
 
-Aplicação Web de um E-Commerce com a funcionalidade do carrinho. Feito utilizando _ReactJS_.
+Aplicação Web front-end de um E-Commerce de cafés (fictício). Feito utilizando _ReactJS_.
 
 :link: <https://coffee-delivery-davirlima.vercel.app/> :link:
 
