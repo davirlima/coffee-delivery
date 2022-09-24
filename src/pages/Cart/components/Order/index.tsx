@@ -24,14 +24,17 @@ export function Order() {
         fetch(`https://viacep.com.br/ws/${e.target.value}/json/`)
           .then((res) => res.json())
           .then((data) => {
-            setValue("street", data.logradouro);
-            setValue("neighborhood", data.bairro);
-            setValue("city", data.localidade);
-            setValue("state", data.uf);
-            setFocus("number");
-          })
-          .catch((error) => {
-            toast.warning("Informe um cep válido");
+            if (data.erro === "true") {
+              toast.warning("Informe um CEP válido");
+              setValue("cep", "");
+              setFocus("cep");
+            } else {
+              setValue("street", data.logradouro);
+              setValue("neighborhood", data.bairro);
+              setValue("city", data.localidade);
+              setValue("state", data.uf);
+              setFocus("number");
+            }
           });
       }
     },
