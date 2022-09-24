@@ -12,6 +12,7 @@ export function SuccessRequest() {
   const neighborhood = order[order.length - 1]?.neighborhood;
   const city = order[order.length - 1]?.city;
   const state = order[order.length - 1]?.state;
+  const complement = order[order.length - 1]?.complement;
   const payment = order[order.length - 1]?.payment;
   const formatedPayment =
     payment === "creditCard"
@@ -36,7 +37,11 @@ export function SuccessRequest() {
             </div>
             <div className="address">
               <p>
-                Entrega em <strong>{`${street}, ${number}`}</strong>
+                Entrega em{" "}
+                <strong>
+                  {`${street}, ${number}`}
+                  {complement != undefined && ` - ${complement}`}
+                </strong>
               </p>
               <p>{`${neighborhood} - ${city}, ${state}`}</p>
             </div>
