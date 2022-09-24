@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 import { CoffeesProps } from "../data/coffees";
 import { produce } from "immer";
 import { AddressFormData } from "../pages/Cart";
@@ -31,6 +31,19 @@ interface CartContextProviderProps {
 export function CartContextProvider({ children }: CartContextProviderProps) {
   const [cartCoffee, setCartCoffee] = useState<CartCoffeeProps[]>([]);
   const [order, setOrder] = useState<OrderProps[]>([]);
+
+  useEffect(() => {
+    const getCoffeeOnStorage = localStorage.getItem("coffee");
+    if (getCoffeeOnStorage) {
+      setCartCoffee(JSON.parse(getCoffeeOnStorage));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (cartCoffee.length > 0) {
+      localStorage.setItem("coffee", JSON.stringify(cartCoffee));
+    }
+  }, [cartCoffee]);
 
   const totalCoffeesOnCart = cartCoffee.length;
 
