@@ -14,11 +14,11 @@ const newRequestFormValidationSchema = zod.object({
     .string()
     .min(9, "Informe um CEP válido")
     .max(9, "Informe um CEP válido"),
-  street: zod.string().min(3, "Informe uma rua válida"),
+  street: zod.string().min(2, "Informe uma rua válida"),
   number: zod.number().min(1, "Informe uma numeração válida"),
   complement: zod.string(),
-  neighborhood: zod.string().min(3, "Informe um bairro válido"),
-  city: zod.string().min(4, "Informe uma cidade válida"),
+  neighborhood: zod.string().min(2, "Informe um bairro válido"),
+  city: zod.string().min(3, "Informe uma cidade válida"),
   state: zod.string().min(2, "Informe um estado válido").max(2),
 
   payment: zod.string().min(1, "Selecione uma forma de pagamento"),

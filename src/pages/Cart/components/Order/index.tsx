@@ -106,6 +106,7 @@ export function Order() {
               type="text"
               placeholder="UF"
               id="uf"
+              maxLength={2}
               {...register("state")}
             />
           </div>
